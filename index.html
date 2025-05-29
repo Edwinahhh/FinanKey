@@ -13,19 +13,27 @@
       <button onclick="location.href='ingresos-gastos.html'">Ingresos y Gastos</button>
       <button onclick="location.href='presupuestos.html'">Presupuestos</button>
       <button onclick="location.href='visualizacion.html'">Visualización</button>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
     </nav>
   </header>
 
   <main>
     <section class="contenido-index">
-  <img src="img/pexels-pixabay-259027.jpg" alt="Gestión financiera" class="imagen-index">
-  <div class="index-texto">
-    <h1>¡Gestiona las finanzas de tu empresa!</h1>
-    <p>¿Tienes un emprendimiento o una empresa en crecimiento? Este espacio es para ti. Organiza tus finanzas con una herramienta simple, ágil y diseñada para acompañarte en cada paso. Todo el control, al alcance de tu mano.</p>
-    <h2>¿Que puedes hacer acá?</h2>
-    <p>Con esta herramienta podrás registrar fácilmente tus ingresos y gastos, llevar el control de tus presupuestos y visualizar tu balance general en gráficos claros y fáciles de entender. Todo en un solo lugar, diseñado para que tomes decisiones inteligentes y lleves tus finanzas al siguiente nivel.</p>
-  </div>
+      <img src="img/pexels-pixabay-259027.jpg" alt="Gestión financiera" class="imagen-index">
+      <div class="index-texto">
+        <h1>¡Gestiona las finanzas de tu empresa!</h1>
+        <p>¿Tienes un emprendimiento o una empresa en crecimiento? Este espacio es para ti. Organiza tus finanzas con una herramienta simple, ágil y diseñada para acompañarte en cada paso. Todo el control, al alcance de tu mano.</p>
+        <h2>¿Que puedes hacer acá?</h2>
+        <p>Con esta herramienta podrás registrar fácilmente tus ingresos y gastos, llevar el control de tus presupuestos y visualizar tu balance general en gráficos claros y fáciles de entender. Todo en un solo lugar, diseñado para que tomes decisiones inteligentes y lleves tus finanzas al siguiente nivel.</p>
+      </div>
     </section>
   </main>
+
+  <script>
+    function cerrarSesion() {
+      localStorage.removeItem("token");
+      window.location.href = "inicio-sesion.html";
+    }
+  </script>
 </body>
 </html>
