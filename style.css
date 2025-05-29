@@ -509,9 +509,9 @@ input:focus {
   }
 
   .visualizacion canvas {
-    width: 100% !important; 
+    width: 95% !important; 
     height: auto !important; 
-    max-height: auto; 
+    max-height: 300px; 
   }
 }
 
