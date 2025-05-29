@@ -15,7 +15,6 @@
 body {
   background-color: var(--base-color);
   color: var(--text-color);
-  
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -440,6 +439,7 @@ input:focus {
     width: 90%;
     padding: 1rem;
     margin-top: 5vh;
+    animation: none;
   }
 
   .intro {
