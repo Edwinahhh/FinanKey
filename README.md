@@ -36,11 +36,11 @@ Crear una empresa desde cero es algo complicado y más si no se tiene un control
 
 # Cronograma de Avances. 📅
    
-| Semana   |                                  Harold                                     |                         Edwin                      |
-|----------|-----------------------------------------------------------------------------|----------------------------------------------------|
-| Semana 1 |    Creación del proyecto, instalación de dependencias y estructura base.    |       Inicio de sesión usando HTML, CSS y JS       |
-| Semana 2 |        Conexión a base de datos, creación de rutas y organización.          |Bocetos y diseño de la página principal o "landpage"|
-| Semana 3 |                                                                             |                                                    |
-| Semana 4 |                                                                             |                                                    |
-| Semana 5 |                                                                             |                                                    |
+| Semana   |                                  Harold                                     |                         Edwin                                    |
+|----------|-----------------------------------------------------------------------------|------------------------------------------------------------------|
+| Semana 1 |    Creación del proyecto, instalación de dependencias y estructura base.    |         Diseño inicial del inicio de sesión y registro           |
+| Semana 2 |        Conexión a base de datos, creación de rutas y organización.          |        Validación del inicio de sesión y registro con JS         |
+| Semana 3 |                                                                             |      Bocetos y diseño de la página principal o "landpage"        |
+| Semana 4 |                                                                             | Creación de "Ingresos y Gastos", "Presupuestos y "Visualización" |
+| Semana 5 |                                                                             |                                                                  |
 
