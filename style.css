@@ -106,11 +106,9 @@ form div.incorrect input {
 @keyframes deslizar {
   from {
     opacity: 0;
-    transform: translateY(30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -458,6 +456,8 @@ input:focus {
     padding: 1rem;
     margin-top: 5vh;
     max-height: 80vh;
+    overflow-y: auto;
+    animation: none;
   }
 
   .intro {
