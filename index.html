@@ -3,19 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FinanKey - Inicio</title>
+  <title>FinanKey</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const token = localStorage.getItem("token");
-      const currentPage = window.location.pathname.split('/').pop();
-      
-      if (!token && currentPage !== 'inicio-sesion.html') {
-        window.location.href = "inicio-sesion.html";
-      }
-    });
+    const token = localStorage.getItem("token");
+    
+    if (!token && window.location.pathname.indexOf('inicio-sesion.html') === -1) {
+      window.location.href = "inicio-sesion.html";
+    }
   </script>
   
   <header>
@@ -35,7 +32,9 @@
       <img src="img/pexels-pixabay-259027.jpg" alt="Gestión financiera" class="imagen-index">
       <div class="index-texto">
         <h1>¡Gestiona las finanzas de tu empresa!</h1>
-        <p>¿Tienes un emprendimiento o una empresa en crecimiento? Este espacio es para ti.</p>
+        <p>¿Tienes un emprendimiento o una empresa en crecimiento? Este espacio es para ti. Organiza tus finanzas con una herramienta simple, ágil y diseñada para acompañarte en cada paso. Todo el control, al alcance de tu mano.</p>
+        <h2>¿Que puedes hacer acá?</h2>
+        <p>Con esta herramienta podrás registrar fácilmente tus ingresos y gastos, llevar el control de tus presupuestos y visualizar tu balance general en gráficos claros y fáciles de entender. Todo en un solo lugar, diseñado para que tomes decisiones inteligentes y lleves tus finanzas al siguiente nivel.</p>
       </div>
     </section>
   </main>
@@ -45,6 +44,13 @@
       localStorage.removeItem("token");
       window.location.href = "inicio-sesion.html";
     }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const token = localStorage.getItem("token");
+      if (!token && window.location.pathname.indexOf('inicio-sesion.html') === -1) {
+        window.location.href = "inicio-sesion.html";
+      }
+    });
   </script>
 </body>
 </html>
