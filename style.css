@@ -40,7 +40,7 @@ body {
     margin: 0 auto 30px auto; 
     max-width: 300px; 
     height: auto;
-    margin-bottom: -10vh;
+    margin-bottom: 0vh;
 }
 
 .logo-registro {
@@ -48,7 +48,7 @@ body {
     margin: 0 auto 30px auto; 
     max-width: 300px; 
     height: auto;
-    margin-bottom: -10vh;
+    margin-bottom: 0vh;
     margin-top: 6vh;
 }
 
@@ -478,12 +478,9 @@ input:focus {
 @media (max-width: 768px) {
   .logo-inicio-sesion,
   .logo-registro {
-    max-width: 200px;       
-    margin: 20px auto !important;  
-    margin-bottom: 20px !important; 
-    position: relative;   
-    z-index: 1;           
-    display: block; 
+    max-width: 200px;
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
 
   header nav button {
