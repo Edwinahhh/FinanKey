@@ -36,114 +36,118 @@
       </section>
     </div>
   </main>
-  
+
   <script>
-  window.onload = () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      alert("Debes iniciar sesión para acceder.");
-      window.location.href = "inicio-sesion.html";
-      return;
-    }
-
-    function parseJwt(token) {
-      try {
-        const base64Url = token.split('.')[1];
-        const base64 = decodeURIComponent(atob(base64Url).split('').map(c =>
-          '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-        ).join(''));
-        return JSON.parse(base64);
-      } catch (e) {
-        return null;
-      }
-    }
-
-    const decoded = parseJwt(token);
-    console.log("Token decodificado:", decoded);
-    const usuario_id = decoded?.id;
-
-    if (!usuario_id) {
-      alert("Token inválido. Inicia sesión nuevamente.");
-      window.location.href = "inicio-sesion.html";
-      return;
-    }
-
-    const btnAgregar = document.getElementById("btn-agregar");
-    const inputFecha = document.getElementById("input-fecha");
-    const inputCantidad = document.getElementById("input-cantidad");
-    const selectTipo = document.getElementById("select-tipo");
-
-    const btnIngresos = document.getElementById("btn-ingresos");
-    const btnGastos = document.getElementById("btn-gastos");
-    const btnTodo = document.getElementById("btn-todo");
-
-    const lista = document.createElement("ul");
-    document.querySelector(".seccion-transacciones").appendChild(lista);
-
-    btnAgregar.addEventListener("click", () => {
-      const fecha = inputFecha.value;
-      const tipo = selectTipo.value.toLowerCase();
-      const cantidad = inputCantidad.value;
-
-      if (!fecha || !cantidad) {
-        alert("Por favor completa todos los campos.");
+    window.onload = () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Debes iniciar sesión para acceder.");
+        window.location.href = "inicio-sesion.html";
         return;
       }
 
-      fetch("https://finankey-backend.onrender.com/api/transacciones", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({ usuario_id, tipo, cantidad, fecha })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.error) {
-          alert("❌ " + data.error);
-        } else {
-          alert("✅ " + (data.mensaje || "Transacción guardada."));
-          cargarTransacciones();
+      function parseJwt(token) {
+        try {
+          const base64Url = token.split('.')[1];
+          const base64 = decodeURIComponent(atob(base64Url).split('').map(c =>
+            '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+          ).join(''));
+          return JSON.parse(base64);
+        } catch (e) {
+          return null;
         }
-      })
-      .catch(err => {
-        console.error("❌ Error:", err);
-        alert("Ocurrió un error al guardar la transacción.");
-      });
-    });
+      }
 
-    function cargarTransacciones(filtro = "todo") {
-      fetch("https://finankey-backend.onrender.com/api/transacciones", {
-        headers: {
-          "Authorization": `Bearer ${token}`
+      const decoded = parseJwt(token);
+      console.log("Token decodificado:", decoded);
+      const usuario_id = decoded?.id;
+
+      if (!usuario_id) {
+        alert("Token inválido. Inicia sesión nuevamente.");
+        window.location.href = "inicio-sesion.html";
+        return;
+      }
+
+      const btnAgregar = document.getElementById("btn-agregar");
+      const inputFecha = document.getElementById("input-fecha");
+      const inputCantidad = document.getElementById("input-cantidad");
+      const selectTipo = document.getElementById("select-tipo");
+
+      const btnIngresos = document.getElementById("btn-ingresos");
+      const btnGastos = document.getElementById("btn-gastos");
+      const btnTodo = document.getElementById("btn-todo");
+
+      const lista = document.createElement("ul");
+      document.querySelector(".seccion-transacciones").appendChild(lista);
+
+      btnAgregar.addEventListener("click", () => {
+        const fecha = inputFecha.value;
+        const tipo = selectTipo.value.toLowerCase();
+        const cantidad = inputCantidad.value;
+
+        if (!fecha || !cantidad) {
+          alert("Por favor completa todos los campos.");
+          return;
         }
-      })
-      .then(res => res.json())
-      .then(transacciones => {
-        lista.innerHTML = "";
-        const filtradas = transacciones.filter(t =>
-          filtro === "todo" ? true : t.tipo === filtro
-        );
-        filtradas.forEach(t => {
-          const li = document.createElement("li");
-          li.textContent = `${t.fecha} - ${t.tipo.toUpperCase()}: $${t.cantidad}`;
-          lista.appendChild(li);
+
+        fetch("https://finankey-backend.onrender.com/api/transacciones", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ usuario_id, tipo, cantidad, fecha })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            alert("❌ " + data.error);
+          } else {
+            alert("✅ " + (data.mensaje || "Transacción guardada."));
+            cargarTransacciones();
+          }
+        })
+        .catch(err => {
+          console.error("❌ Error:", err);
+          alert("Ocurrió un error al guardar la transacción.");
         });
-      })
-      .catch(err => {
-        console.error("❌ Error al cargar transacciones:", err);
-        alert("No se pudieron cargar las transacciones.");
       });
-    }
 
-    btnIngresos.addEventListener("click", () => cargarTransacciones("ingreso"));
-    btnGastos.addEventListener("click", () => cargarTransacciones("gasto"));
-    btnTodo.addEventListener("click", () => cargarTransacciones("todo"));
+      btnIngresos.addEventListener("click", () => cargarTransacciones("ingreso"));
+      btnGastos.addEventListener("click", () => cargarTransacciones("gasto"));
+      btnTodo.addEventListener("click", () => cargarTransacciones("todo"));
 
-    cargarTransacciones();
-  };
-</script>
+      function cargarTransacciones(filtro = "todo") {
+        fetch(`https://finankey-backend.onrender.com/api/transacciones/${usuario_id}`, {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(transacciones => {
+          lista.innerHTML = "";
+          const filtradas = transacciones.filter(t =>
+            filtro === "todo" ? true : t.tipo === filtro
+          );
+          filtradas.forEach(t => {
+            const li = document.createElement("li");
+            li.textContent = `${t.fecha} - ${t.tipo.toUpperCase()}: $${t.cantidad}`;
+            lista.appendChild(li);
+          });
+        })
+        .catch(err => {
+          console.error("❌ Error al cargar transacciones:", err);
+          alert("No se pudieron cargar las transacciones.");
+        });
+      }
 
+      cargarTransacciones(); // Carga inicial
+    };
+  </script>
 </body>
 </html>
