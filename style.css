@@ -511,7 +511,7 @@ input:focus {
   .visualizacion canvas {
     width: 100% !important; 
     height: auto !important; 
-    max-height: 300px; 
+    max-height: auto; 
   }
 }
 
