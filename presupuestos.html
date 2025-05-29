@@ -13,7 +13,7 @@
       <button onclick="window.location.href='ingresos-gastos.html'">Ingresos y Gastos</button>
       <button onclick="window.location.href='presupuestos.html'">Presupuestos</button>
       <button onclick="window.location.href='visualizacion.html'">Visualización</button>
-      <button id="logoutBtn">Cerrar sesión</button>
+      <button id="logoutBtn" style="display: none;">Cerrar sesión</button>
     </nav>
   </header>
 
@@ -45,34 +45,32 @@
   </main>
 
   <script>
-    function cerrarSesion() {
-      localStorage.removeItem("token");
-      window.location.href = "inicio-sesion.html";
+    function parseJwt(token) {
+      try {
+        const base64Url = token.split('.')[1];
+        const base64 = decodeURIComponent(atob(base64Url).split('').map(c =>
+          '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+        ).join(''));
+        return JSON.parse(base64);
+      } catch (e) {
+        return null;
+      }
     }
 
     window.onload = () => {
       const token = localStorage.getItem("token");
-      if (!token) {
+
+      const logoutBtn = document.getElementById("logoutBtn");
+      if (token) {
+        logoutBtn.style.display = "inline-block";
+        logoutBtn.addEventListener("click", () => {
+          localStorage.removeItem("token");
+          window.location.href = "inicio-sesion.html";
+        });
+      } else {
         alert("Debes iniciar sesión para acceder.");
         window.location.href = "inicio-sesion.html";
         return;
-      }
-
-       document.getElementById("logoutBtn").addEventListener("click", () => {
-        localStorage.removeItem("token"); 
-        window.location.href = "inicio-sesion.html"; 
-      });
-
-      function parseJwt(token) {
-        try {
-          const base64Url = token.split('.')[1];
-          const base64 = decodeURIComponent(atob(base64Url).split('').map(c =>
-            '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-          ).join(''));
-          return JSON.parse(base64);
-        } catch (e) {
-          return null;
-        }
       }
 
       const decoded = parseJwt(token);
