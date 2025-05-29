@@ -90,7 +90,7 @@
         return;
       }
 
-      fetch(`https://finankey-backend.onrender.com/api/transacciones/${usuario_id}`, {
+      fetch("https://finankey-backend.onrender.com/api/transacciones", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -114,7 +114,7 @@
     });
 
     function cargarTransacciones(filtro = "todo") {
-      fetch(`https://finankey-backend.onrender.com/api/transacciones`, {
+      fetch("https://finankey-backend.onrender.com/api/transacciones", {
         headers: {
           "Authorization": `Bearer ${token}`
         }
