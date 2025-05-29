@@ -59,6 +59,7 @@
     }
 
     const decoded = parseJwt(token);
+    console.log("Token decodificado:", decoded);
     const usuario_id = decoded?.id;
 
     if (!usuario_id) {
