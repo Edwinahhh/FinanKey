@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presupuestos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="body-presupuestos">
+  <header>
+    <button class="logo" onclick="window.location.href='index.html'">FinanKey</button>
+    <nav>
+      <button onclick="window.location.href='ingresos-gastos.html'">Ingresos y Gastos</button>
+      <button onclick="window.location.href='presupuestos.html'">Presupuestos</button>
+      <button onclick="window.location.href='visualizacion.html'">Visualización</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="contenedor-presupuestos">
+      <section class="presupuestos">
+        <h2>Presupuesto Mensual</h2>
+        <p>Tu dinero, Tus reglas, Acomoda tu presupuesto.</p>
+        <input type="text" id="input-categoria" placeholder="Categoría (Ej. Arriendo)">
+        <input type="number" id="input-limite" class="form-box" placeholder="Límite ($)">
+        <button id="btn-guardar">Establecer Presupuesto</button>
+        <p id="mensaje-estado" class="alerta-limite"></p>
+      </section>
+
+      <section class="tabla-presupuestos">
+        <h3>Presupuestos Registrados</h3>
+        <table border="1" style="width: 100%; text-align: left;">
+          <thead>
+            <tr>
+              <th>Categoría</th>
+              <th>Límite ($)</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-presupuestos-body"></tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

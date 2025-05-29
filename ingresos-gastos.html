@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingresos y Gastos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="body-ingresos">
+  <header>
+    <button class="logo" onclick="window.location.href='index.html'">MiniMoney</button>
+    <nav>
+      <button onclick="window.location.href='ingresos-gastos.html'">Ingresos y Gastos</button>
+      <button onclick="window.location.href='presupuestos.html'">Presupuestos</button>
+      <button onclick="window.location.href='visualizacion.html'">Visualización</button>
+    </nav>
+  </header>
+  <main>
+    <h2>Registrar Transacción</h2>
+      <input type="date" id="input-fecha" placeholder="Fecha">
+      <select id="select-tipo">
+        <option value="ingreso">Ingreso</option>
+        <option value="gasto">Gasto</option>
+      </select>
+      <input type="number" id="input-cantidad" placeholder="Cantidad">
+      <button id="btn-agregar">Agregar</button>
+
+      <div class="filtros">
+        <button id="btn-ingresos">Mostrar Ingresos</button>
+        <button id="btn-gastos">Mostrar Gastos</button>
+        <button id="btn-todo">Mostrar Todo</button>
+      </div>
+  </main>
+</body>
+</html>

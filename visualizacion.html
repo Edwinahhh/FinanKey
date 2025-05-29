@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualización</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="body-visualizacion">
+  <header>
+    <button class="logo" onclick="window.location.href='index.html'">FinanKey</button>
+    <nav>
+      <button onclick="window.location.href='ingresos-gastos.html'">Ingresos y Gastos</button>
+      <button onclick="window.location.href='presupuestos.html'">Presupuestos</button>
+      <button onclick="window.location.href='visualizacion.html'">Visualización</button>
+    </nav>
+  </header>
+
+  <div class="contenedor-visualizacion">
+    <main>
+      <section class="visualizacion">
+        <h2>Gráfica de Balance</h2>
+        <p>Mira en qué estás ganando… y en qué se va.</p>
+        <canvas id="graficoBalance"></canvas>
+        <p>Balance Económico Total: <strong id="balanceTotal">$0</strong></p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
