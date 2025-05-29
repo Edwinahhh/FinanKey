@@ -467,6 +467,13 @@ input:focus {
     max-height: none;
   }
 
+  .visualizacion canvas {
+    width: 100% !important; 
+    height: 300px !important; 
+    margin-top: 1rem;
+    padding: 0.5rem;
+  }
+
   .intro {
     flex-direction: column;
     padding: 2rem 1rem;
