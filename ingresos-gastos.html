@@ -90,7 +90,7 @@
         return;
       }
 
-      fetch(`https://finankey-backend.onrender.com/api/transacciones`, {
+      fetch(`https://finankey-backend.onrender.com/api/transacciones/${usuario_id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
