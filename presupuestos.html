@@ -13,6 +13,7 @@
       <button onclick="window.location.href='ingresos-gastos.html'">Ingresos y Gastos</button>
       <button onclick="window.location.href='presupuestos.html'">Presupuestos</button>
       <button onclick="window.location.href='visualizacion.html'">Visualización</button>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
     </nav>
   </header>
 
@@ -44,112 +45,116 @@
   </main>
 
   <script>
-  window.onload = () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      alert("Debes iniciar sesión para acceder.");
+    function cerrarSesion() {
+      localStorage.removeItem("token");
       window.location.href = "inicio-sesion.html";
-      return;
     }
 
-    function parseJwt(token) {
-      try {
-        const base64Url = token.split('.')[1];
-        const base64 = decodeURIComponent(atob(base64Url).split('').map(c =>
-          '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-        ).join(''));
-        return JSON.parse(base64);
-      } catch (e) {
-        return null;
-      }
-    }
-
-    const decoded = parseJwt(token);
-    const usuario_id = decoded?.id;
-    if (!usuario_id || isNaN(usuario_id)) {
-      alert("Token inválido.");
-      window.location.href = "inicio-sesion.html";
-      return;
-    }
-
-    const inputCategoria = document.getElementById("input-categoria");
-    const inputLimite = document.getElementById("input-limite");
-    const btnGuardar = document.getElementById("btn-guardar");
-    const mensajeEstado = document.getElementById("mensaje-estado");
-    const tablaBody = document.getElementById("tabla-presupuestos-body");
-
-    btnGuardar.addEventListener("click", () => {
-      const categoria = inputCategoria.value.trim();
-      const limite = parseFloat(inputLimite.value);
-
-      if (!categoria || isNaN(limite)) {
-        mensajeEstado.style.color = "red";
-        mensajeEstado.textContent = "Debes completar ambos campos.";
+    window.onload = () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Debes iniciar sesión para acceder.");
+        window.location.href = "inicio-sesion.html";
         return;
       }
 
-      fetch("https://finankey-backend.onrender.com/api/presupuestos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({ usuario_id, categoria, limite })
-      })
-      .then(async res => {
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(text);
+      function parseJwt(token) {
+        try {
+          const base64Url = token.split('.')[1];
+          const base64 = decodeURIComponent(atob(base64Url).split('').map(c =>
+            '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+          ).join(''));
+          return JSON.parse(base64);
+        } catch (e) {
+          return null;
         }
-        return res.json();
-      })
-      .then(data => {
-        mensajeEstado.style.color = "green";
-        mensajeEstado.textContent = "Presupuesto guardado exitosamente.";
-        inputCategoria.value = "";
-        inputLimite.value = "";
-        cargarPresupuestos();
-      })
-      .catch(err => {
-        mensajeEstado.style.color = "red";
-        mensajeEstado.textContent = "Error: " + err.message;
-      });
-    });
+      }
 
-    function cargarPresupuestos() {
-      fetch(`https://finankey-backend.onrender.com/api/presupuestos/${usuario_id}`, {
-        headers: {
-          "Authorization": `Bearer ${token}`
+      const decoded = parseJwt(token);
+      const usuario_id = decoded?.id;
+      if (!usuario_id || isNaN(usuario_id)) {
+        alert("Token inválido.");
+        window.location.href = "inicio-sesion.html";
+        return;
+      }
+
+      const inputCategoria = document.getElementById("input-categoria");
+      const inputLimite = document.getElementById("input-limite");
+      const btnGuardar = document.getElementById("btn-guardar");
+      const mensajeEstado = document.getElementById("mensaje-estado");
+      const tablaBody = document.getElementById("tabla-presupuestos-body");
+
+      btnGuardar.addEventListener("click", () => {
+        const categoria = inputCategoria.value.trim();
+        const limite = parseFloat(inputLimite.value);
+
+        if (!categoria || isNaN(limite)) {
+          mensajeEstado.style.color = "red";
+          mensajeEstado.textContent = "Debes completar ambos campos.";
+          return;
         }
-      })
-      .then(async res => {
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(text);
-        }
-        return res.json();
-      })
-      .then(presupuestos => {
-        tablaBody.innerHTML = "";
-        presupuestos.forEach(p => {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>${p.categoria}</td>
-            <td>$${p.limite}</td>
-            <td>${new Date(p.fecha_creacion).toLocaleDateString()}</td>
-          `;
-          tablaBody.appendChild(row);
+
+        fetch("https://finankey-backend.onrender.com/api/presupuestos", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ usuario_id, categoria, limite })
+        })
+        .then(async res => {
+          if (!res.ok) {
+            const text = await res.text();
+            throw new Error(text);
+          }
+          return res.json();
+        })
+        .then(data => {
+          mensajeEstado.style.color = "green";
+          mensajeEstado.textContent = "Presupuesto guardado exitosamente.";
+          inputCategoria.value = "";
+          inputLimite.value = "";
+          cargarPresupuestos();
+        })
+        .catch(err => {
+          mensajeEstado.style.color = "red";
+          mensajeEstado.textContent = "Error: " + err.message;
         });
-      })
-      .catch(err => {
-        mensajeEstado.style.color = "red";
-        mensajeEstado.textContent = "Error al cargar presupuestos.";
       });
-    }
 
-    cargarPresupuestos();
-  };
-</script>
+      function cargarPresupuestos() {
+        fetch(`https://finankey-backend.onrender.com/api/presupuestos/${usuario_id}`, {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then(async res => {
+          if (!res.ok) {
+            const text = await res.text();
+            throw new Error(text);
+          }
+          return res.json();
+        })
+        .then(presupuestos => {
+          tablaBody.innerHTML = "";
+          presupuestos.forEach(p => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${p.categoria}</td>
+              <td>$${p.limite}</td>
+              <td>${new Date(p.fecha_creacion).toLocaleDateString()}</td>
+            `;
+            tablaBody.appendChild(row);
+          });
+        })
+        .catch(err => {
+          mensajeEstado.style.color = "red";
+          mensajeEstado.textContent = "Error al cargar presupuestos.";
+        });
+      }
 
+      cargarPresupuestos();
+    };
+  </script>
 </body>
 </html>
