@@ -48,7 +48,7 @@ Crear una empresa desde cero es algo complicado y más si no se tiene un control
 | Semana 7 |Implementación de rutas protegidas con token (usuarios, transacciones, presupuestos)    |            Conexión base de datos desde GitHub y Frontend                |
 | Semana 8 |                                                                                        |                           Rediseño Interfaz                              |
 | Semana 8 |                      Conexión del backend con Render                                   |                               LogOut                                     |
-| Semana 9 |                                                                                        |          Ajustes varios, móviles, resolución, márgenes, etc              |
+| Semana 9 |                Conexión de la base de datos MySQL en railway                           |          Ajustes varios, móviles, resolución, márgenes, etc              |
 
 
 
