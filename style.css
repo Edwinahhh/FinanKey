@@ -21,6 +21,20 @@ body {
   animation: aparecer 1.5s ease-in-out;
 }
 
+#logoutBtn {  
+  vertical-align: middle;
+  margin-left: 2vh;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+#logoutBtn img {
+  width: 32px;
+  height: 32px;
+}
+
 .logo-inicio-sesion {
     display: block;
     margin: 0 auto 30px auto; 
