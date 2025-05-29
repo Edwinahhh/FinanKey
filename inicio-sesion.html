@@ -8,14 +8,6 @@
   <script type="text/javascript" src="validacion.js" defer></script>
 </head>
 <body class="body-inicio-sesion">
-  <!-- Verificación de sesión existente -->
-  <script>
-    // Si ya tiene token válido, redirigir a index.html
-    if(localStorage.getItem("token")) {
-      window.location.href = "index.html";
-    }
-  </script>
-
   <img src="img/FinanKeyLogo.png" alt="Logo" class="logo-inicio-sesion">
 
   <div class="wrapper">
@@ -66,8 +58,7 @@
         if (data.token) {
           alert("Inicio de sesión exitoso ✅");
           localStorage.setItem("token", data.token);
-          // Cambiado a index.html en lugar de ingresos-gastos.html
-          window.location.href = "index.html";
+          window.location.href = "ingresos-gastos.html";
         } else {
           document.getElementById("mensaje-error").textContent = data.error || "Error al iniciar sesión.";
         }
