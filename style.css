@@ -40,7 +40,7 @@ body {
     margin: 0 auto 30px auto; 
     max-width: 300px; 
     height: auto;
-    margin-bottom: 0vh;
+    margin-bottom: -10vh;
 }
 
 .logo-registro {
@@ -48,7 +48,7 @@ body {
     margin: 0 auto 30px auto; 
     max-width: 300px; 
     height: auto;
-    margin-bottom: 0vh;
+    margin-bottom: -10vh;
     margin-top: 6vh;
 }
 
