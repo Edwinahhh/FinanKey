@@ -13,7 +13,7 @@
       <button onclick="window.location.href='ingresos-gastos.html'">Ingresos y Gastos</button>
       <button onclick="window.location.href='presupuestos.html'">Presupuestos</button>
       <button onclick="window.location.href='visualizacion.html'">Visualización</button>
-      <button id="logoutBtn">Cerrar sesión</button>
+      <button id="logoutBtn" style="display: none;">Cerrar sesión</button>
     </nav>
   </header>
 
@@ -21,7 +21,7 @@
     <div class="contenedor-presupuestos">
       <section class="presupuestos">
         <h2>Presupuesto Mensual</h2>
-        <p>Tu dinero, Tus reglas, Acomoda tu presupuesto.</p>
+        <p>Tu dinero, tus reglas. Acomoda tu presupuesto.</p>
         <input type="text" id="input-categoria" placeholder="Categoría (Ej. Arriendo)">
         <input type="number" id="input-limite" class="form-box" placeholder="Límite ($)">
         <button id="btn-guardar">Establecer Presupuesto</button>
@@ -59,14 +59,24 @@
 
     window.onload = () => {
       const token = localStorage.getItem("token");
+      const logoutBtn = document.getElementById("logoutBtn");
 
-      document.getElementById("logoutBtn").addEventListener("click", () => {
-        localStorage.removeItem("token"); 
-        window.location.href = "inicio-sesion.html"; 
+      if (!token) {
+        alert("Debes iniciar sesión para acceder.");
+        window.location.href = "inicio-sesion.html";
+        return;
+      }
+
+      logoutBtn.style.display = "inline-block";
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("token");
+        window.location.href = "inicio-sesion.html";
       });
 
       const decoded = parseJwt(token);
       const usuario_id = decoded?.id;
+      const nombre_usuario = decoded?.nombre;
+
       if (!usuario_id || isNaN(usuario_id)) {
         alert("Token inválido.");
         window.location.href = "inicio-sesion.html";
