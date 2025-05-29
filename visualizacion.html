@@ -57,7 +57,7 @@
         return;
       }
 
-      fetch(`http://localhost:3000/api/resumen-mensual/${usuario_id}`)
+      fetch(`https://finankey-backend.onrender.com/api/resumen-mensual/${usuario_id}`)
         .then(res => res.json())
         .then(datos => {
           const meses = [...new Set(datos.map(d => d.mes))];

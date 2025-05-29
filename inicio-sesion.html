@@ -41,12 +41,12 @@
 
   <script>
     document.getElementById("form").addEventListener("submit", function(e) {
-      e.preventDefault(); // Evita recarga
+      e.preventDefault(); 
 
       const correo = document.getElementById("entrada-email").value;
       const contrasena = document.getElementById("entrada-contraseña").value;
 
-      fetch("http://localhost:3000/api/login", {
+      fetch("https://finankey-backend.onrender.com/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

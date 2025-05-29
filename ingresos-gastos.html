@@ -89,10 +89,11 @@
           return;
         }
 
-        fetch("http://localhost:3000/api/transacciones", {
+        fetch(`https://finankey-backend.onrender.com/api/transacciones/${usuario_id}`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
           body: JSON.stringify({ usuario_id, tipo, cantidad, fecha })
         })
@@ -104,19 +105,23 @@
       });
 
       function cargarTransacciones(filtro = "todo") {
-        fetch(`http://localhost:3000/api/transacciones/${usuario_id}`)
-          .then(res => res.json())
-          .then(transacciones => {
-            lista.innerHTML = "";
-            const filtradas = transacciones.filter(t =>
-              filtro === "todo" ? true : t.tipo === filtro
-            );
-            filtradas.forEach(t => {
-              const li = document.createElement("li");
-              li.textContent = `${t.fecha} - ${t.tipo.toUpperCase()}: $${t.cantidad}`;
-              lista.appendChild(li);
-            });
+        fetch(`https://finankey-backend.onrender.com/api/transacciones/${usuario_id}`, {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then(res => res.json())
+        .then(transacciones => {
+          lista.innerHTML = "";
+          const filtradas = transacciones.filter(t =>
+            filtro === "todo" ? true : t.tipo === filtro
+          );
+          filtradas.forEach(t => {
+            const li = document.createElement("li");
+            li.textContent = `${t.fecha} - ${t.tipo.toUpperCase()}: $${t.cantidad}`;
+            lista.appendChild(li);
           });
+        });
       }
 
       btnIngresos.addEventListener("click", () => cargarTransacciones("ingreso"));
