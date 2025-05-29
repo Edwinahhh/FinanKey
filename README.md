@@ -4,7 +4,7 @@ Crear una empresa desde cero es algo complicado y más si no se tiene un control
 
 # Integrantes del equipo. 
 
-[Harold David Durán Virguez](https://github.com/Hardur17)/n
+[Harold David Durán Virguez](https://github.com/Hardur17)
 
 [Edwin David González Avendaño](https://github.com/Edwinahhh)
 
