@@ -51,5 +51,39 @@
 
         <p>¿Ya tienes una cuenta? <a href="inicio-sesion.html">Iniciar sesión</a></p>
     </div>
+
+    <script>
+    document.getElementById("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const nombre = document.getElementById("entrada-primer-nombre").value;
+        const correo = document.getElementById("entrada-email").value;
+        const contrasena = document.getElementById("entrada-contraseña").value;
+        const repetir = document.getElementById("entrada-repetir-contraseña").value;
+
+        if (contrasena !== repetir) {
+            document.getElementById("mensaje-error").textContent = "Las contraseñas no coinciden.";
+            return;
+        }
+
+        fetch("http://localhost:3000/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nombre, correo, contrasena })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.mensaje) {
+                alert("Registro exitoso ✅");
+                window.location.href = "inicio-sesion.html";
+            } else {
+                document.getElementById("mensaje-error").textContent = data.error || "Error al registrar.";
+            }
+        })
+        .catch(() => {
+            document.getElementById("mensaje-error").textContent = "Error de conexión con el servidor.";
+        });
+    });
+    </script>
 </body>
 </html>

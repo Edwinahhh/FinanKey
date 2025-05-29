@@ -37,6 +37,36 @@
     </form>
 
     <p>¿Eres nuevo? <a href="registro.html">Regístrate</a></p>
-  </div>  
+  </div>   
+
+  <script>
+    document.getElementById("form").addEventListener("submit", function(e) {
+      e.preventDefault(); // Evita recarga
+
+      const correo = document.getElementById("entrada-email").value;
+      const contrasena = document.getElementById("entrada-contraseña").value;
+
+      fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ correo, contrasena })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.token) {
+          alert("Inicio de sesión exitoso ✅");
+          localStorage.setItem("token", data.token);
+          window.location.href = "ingresos-gastos.html";
+        } else {
+          document.getElementById("mensaje-error").textContent = data.error || "Error al iniciar sesión.";
+        }
+      })
+      .catch(() => {
+        document.getElementById("mensaje-error").textContent = "Error de conexión con el servidor.";
+      });
+    });
+  </script>
 </body>
 </html>

@@ -42,5 +42,93 @@
       </section>
     </div>
   </main>
+
+  <script>
+    window.onload = () => {
+      // Validar token
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Debes iniciar sesión para acceder.");
+        window.location.href = "inicio-sesion.html";
+        return;
+      }
+
+      // Decodificar token
+      function parseJwt(token) {
+        try {
+          const base64Url = token.split('.')[1];
+          const base64 = decodeURIComponent(atob(base64Url).split('').map(c =>
+            '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+          ).join(''));
+          return JSON.parse(base64);
+        } catch (e) {
+          return null;
+        }
+      }
+
+      const decoded = parseJwt(token);
+      const usuario_id = decoded?.id;
+      if (!usuario_id) {
+        alert("Token inválido.");
+        window.location.href = "inicio-sesion.html";
+        return;
+      }
+
+      const inputCategoria = document.getElementById("input-categoria");
+      const inputLimite = document.getElementById("input-limite");
+      const btnGuardar = document.getElementById("btn-guardar");
+      const mensajeEstado = document.getElementById("mensaje-estado");
+      const tablaBody = document.getElementById("tabla-presupuestos-body");
+
+      btnGuardar.addEventListener("click", () => {
+        const categoria = inputCategoria.value.trim();
+        const limite = parseFloat(inputLimite.value);
+
+        if (!categoria || isNaN(limite)) {
+          mensajeEstado.style.color = "red";
+          mensajeEstado.textContent = "Debes completar ambos campos.";
+          return;
+        }
+
+        fetch("http://localhost:3000/api/presupuestos", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ usuario_id, categoria, limite })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            mensajeEstado.style.color = "red";
+            mensajeEstado.textContent = data.error;
+          } else {
+            mensajeEstado.style.color = "green";
+            mensajeEstado.textContent = "Presupuesto guardado exitosamente.";
+            inputCategoria.value = "";
+            inputLimite.value = "";
+            cargarPresupuestos();
+          }
+        });
+      });
+
+      function cargarPresupuestos() {
+        fetch(`http://localhost:3000/api/presupuestos/${usuario_id}`)
+          .then(res => res.json())
+          .then(presupuestos => {
+            tablaBody.innerHTML = "";
+            presupuestos.forEach(p => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                <td>${p.categoria}</td>
+                <td>$${p.limite}</td>
+                <td>${new Date(p.fecha_creacion).toLocaleDateString()}</td>
+              `;
+              tablaBody.appendChild(row);
+            });
+          });
+      }
+
+      cargarPresupuestos(); 
+    };
+  </script>
 </body>
 </html>

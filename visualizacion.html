@@ -27,5 +27,83 @@
       </section>
     </main>
   </div>
+
+  <script>
+    window.onload = () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Debes iniciar sesión para acceder.");
+        window.location.href = "inicio-sesion.html";
+        return;
+      }
+
+      function parseJwt(token) {
+        try {
+          const base64Url = token.split('.')[1];
+          const base64 = decodeURIComponent(atob(base64Url).split('').map(c =>
+            '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+          ).join(''));
+          return JSON.parse(base64);
+        } catch (e) {
+          return null;
+        }
+      }
+
+      const decoded = parseJwt(token);
+      const usuario_id = decoded?.id;
+      if (!usuario_id) {
+        alert("Token inválido.");
+        window.location.href = "inicio-sesion.html";
+        return;
+      }
+
+      fetch(`http://localhost:3000/api/resumen-mensual/${usuario_id}`)
+        .then(res => res.json())
+        .then(datos => {
+          const meses = [...new Set(datos.map(d => d.mes))];
+
+          const ingresos = meses.map(mes => {
+            const obj = datos.find(d => d.mes === mes && d.tipo === 'ingreso');
+            return obj ? parseFloat(obj.total) : 0;
+          });
+
+          const gastos = meses.map(mes => {
+            const obj = datos.find(d => d.mes === mes && d.tipo === 'gasto');
+            return obj ? parseFloat(obj.total) : 0;
+          });
+
+          const totalBalance = ingresos.reduce((a, b) => a + b, 0) - gastos.reduce((a, b) => a + b, 0);
+          document.getElementById("balanceTotal").textContent = `$${totalBalance.toFixed(2)}`;
+
+          const ctx = document.getElementById('graficoBalance').getContext('2d');
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: meses,
+              datasets: [
+                {
+                  label: 'Ingresos',
+                  data: ingresos,
+                  backgroundColor: '#1e90ff'
+                },
+                {
+                  label: 'Gastos',
+                  data: gastos,
+                  backgroundColor: '#ff4c4c'
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+    };
+  </script>
 </body>
 </html>
