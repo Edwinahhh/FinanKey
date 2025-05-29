@@ -432,14 +432,19 @@ input:focus {
 
 @media (max-width: 768px) {
 
-  
+  .wrapper,
   .contenedor-ingresos,
   .contenedor-presupuestos,
   .contenedor-visualizacion {
-    width: 90%;
-    padding: 1rem;
-    margin-top: 5vh;
-    animation: none;
+    width: 700px;
+    min-height: 450px; 
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--base-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgb(21, 21, 21);
+    overflow-y: auto; 
+    animation: none; 
   }
 
   .intro {
@@ -477,9 +482,9 @@ input:focus {
 @media (max-width: 768px) {
   .logo-inicio-sesion,
   .logo-registro {
-    max-width: 200px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    width: 90%;
+    min-height: auto; 
+    max-height: none;
   }
 
   header nav button {
