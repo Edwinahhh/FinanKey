@@ -68,7 +68,10 @@ body {
   padding-top: 7rem;
 }
 
-
+@keyframes aparecer {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
 #mensaje-error {
   color: red;
