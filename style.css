@@ -359,7 +359,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  animation: deslizar 0.8s ease forwards;
 }
 
 .alerta-limite {
