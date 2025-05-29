@@ -1,41 +1,39 @@
-
-# Gestor financiero para empresas pequeñas o emprendimientos. Ganancias, gastos y balances generales. (FinanKey) 🏦🪙 
+# Gestor financiero para empresas pequeñas o emprendimientos. Ganancias, gastos y balances generales. (FinanKey)  
 
 Crear una empresa desde cero es algo complicado y más si no se tiene un control claro sobre el balance que genera un emprendimiento, ser un empresario pequeño en Colombia conlleva ciertos desafíos, la idea de este software es ayudar a las pequeñas empresas a llevar mejor su control de gastos y hacer mas ameno su camino en el emprendimiento.
 
-# Integrantes del equipo. 🧑‍💻🔧
+# Integrantes del equipo. 
 
-- [Harold David Durán Virguez](https://github.com/Hardur17)
-- [Edwin David González Avendaño](https://github.com/Edwinahhh)
+[Harold David Durán Virguez](https://github.com/Hardur17)
+[Edwin David González Avendaño](https://github.com/Edwinahhh)
 
-# Modulos. 🟪🟥🟧
+# Modulos. 
 
-## Gestión de ingresos y gastos. 💸
-- Opciones para que el usuario pueda ingresar los ingresos y gastos (Fecha, tipo y cantidad).
-- Opciones de filtrado para separar ingresos y gastos.
+## Gestión de ingresos y gastos. 
+Opciones para que el usuario pueda ingresar los ingresos y gastos (Fecha, tipo y cantidad).
+Opciones de filtrado para separar ingresos y gastos.
 
-## Visualización de balance. 📈
-- Posibilidad para crear presupuestos con su dinero.
+## Visualización de balance. 
+Posibilidad para crear presupuestos con su dinero.
 
-## Análisis de gastos. 📊
-- Gráficos del balance de gastos e ingresos.
-- Balance económico básico.
+## Análisis de gastos. 
+Gráficos del balance de gastos e ingresos.
+Balance económico básico.
 
-## Seguridad y roles. 🔐
-- Claves encriptadas.
-- Inicio de sesión con credenciales únicas.
+## Seguridad. 
+Claves encriptadas.
+Inicio de sesión con credenciales únicas.
 
-# Tecnologías. 💻
-- Visual Studio Code
-- HTML, CSS, JavaScript
-- Chart.js
-- JWT, bcrypt.js
-- Node.js, Express.js
-- MySql
-- Render, Railway, Github Pages
+# Tecnologías. 
+Visual Studio Code
+HTML, CSS, JavaScript
+Chart.js
+JWT, bcrypt.js
+Node.js, Express.js
+MySql
+Render, Railway, Github Pages
 
- creación de rutas y organización. 
-# Cronograma de Avances. 📅
+# Cronograma de Avances. 
    
 | Semana   |                                  Harold                                                |                         Edwin                                            |
 |----------|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
