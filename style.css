@@ -478,9 +478,12 @@ input:focus {
 @media (max-width: 768px) {
   .logo-inicio-sesion,
   .logo-registro {
-    width: 90%;
-    min-height: auto; 
-    max-height: none;
+    max-width: 200px;       
+    margin: 20px auto !important;  
+    margin-bottom: 20px !important; 
+    position: relative;   
+    z-index: 1;           
+    display: block; 
   }
 
   header nav button {
