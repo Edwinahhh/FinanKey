@@ -2,17 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=registro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FinanKey</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <script>
-    window.location.href = "inicio-sesion.html";
+    // Redirige solo la primera vez
+    if (!localStorage.getItem("redirigido")) {
+      localStorage.setItem("redirigido", "true");
+      window.location.href = "inicio-sesion.html";
+    }
   </script>
+
   <header>
-    <h1 class="logo">FinanKey</h1>
+    <h1 class="logo" onclick="location.href='index.html'" style="cursor:pointer;">FinanKey</h1>
     <nav>
       <button onclick="location.href='ingresos-gastos.html'">Ingresos y Gastos</button>
       <button onclick="location.href='presupuestos.html'">Presupuestos</button>
@@ -29,7 +33,7 @@
       <div class="index-texto">
         <h1>¡Gestiona las finanzas de tu empresa!</h1>
         <p>¿Tienes un emprendimiento o una empresa en crecimiento? Este espacio es para ti. Organiza tus finanzas con una herramienta simple, ágil y diseñada para acompañarte en cada paso. Todo el control, al alcance de tu mano.</p>
-        <h2>¿Que puedes hacer acá?</h2>
+        <h2>¿Qué puedes hacer acá?</h2>
         <p>Con esta herramienta podrás registrar fácilmente tus ingresos y gastos, llevar el control de tus presupuestos y visualizar tu balance general en gráficos claros y fáciles de entender. Todo en un solo lugar, diseñado para que tomes decisiones inteligentes y lleves tus finanzas al siguiente nivel.</p>
       </div>
     </section>
@@ -38,8 +42,11 @@
   <script>
     function cerrarSesion() {
       localStorage.removeItem("token");
+      localStorage.removeItem("redirigido");
       window.location.href = "inicio-sesion.html";
     }
+
+    document.getElementById("logoutBtn").addEventListener("click", cerrarSesion);
   </script>
 </body>
 </html>
