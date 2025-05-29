@@ -460,7 +460,7 @@ input:focus {
   }
 
   .contenedor-visualizacion {
-    width: 95%;
+    width: 80%;
     padding: 1rem;
     margin-top: 3vh;
     min-height: auto;
