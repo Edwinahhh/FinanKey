@@ -1,8 +1,8 @@
 :root {
-    --accent-color: #ffffff;
-    --base-color: #000000e1;
+    --accent-color: #4b4b4b;
+    --base-color: #ffffff;
     --text-color: #1a1a1a;
-    --input-color: #ffffffea;
+    --input-color: #f0f0f0;
   }
   
   * {
@@ -19,16 +19,55 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-image: url(pexels-padrinan-255379.jpg);
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  nav button {
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: var(--input-color);
+    color: var(--text-color);
+  }
+  
+  .image-section {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  
+  .image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
   .wrapper {
-    max-width: 500px;
+    max-width: 400px;
+    margin: 0 auto;
     padding: 30px;
-    background-color: #0db3d4;
+    border-radius: 16px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   }
   
-
+  .wrapper h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+    color: var(--accent-color);
+  }
+  
   form div {
     display: flex;
     align-items: center;
@@ -37,6 +76,12 @@
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 15px;
+  }
+  
+  form div label {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
   }
   
   form input {
@@ -58,7 +103,6 @@
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
   }
 
   #mensaje-error {
