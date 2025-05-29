@@ -283,7 +283,6 @@ main {
   padding: 2rem; 
   margin-top: 17vh;
   box-shadow: 0 8px 20px rgb(21, 21, 21);
-  animation: deslizar 0.8s ease forwards;
   overflow-y: auto;
 }
 
@@ -392,7 +391,6 @@ main {
   padding: 2rem; 
   margin-top: 17vh;
   box-shadow: 0 8px 20px rgb(21, 21, 21);
-  animation: deslizar 0.8s ease forwards;
 }
 
 .visualizacion {
