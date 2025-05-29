@@ -436,15 +436,11 @@ input:focus {
   .contenedor-ingresos,
   .contenedor-presupuestos,
   .contenedor-visualizacion {
-    width: 700px;
-    min-height: 450px; 
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: var(--base-color);
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgb(21, 21, 21);
-    overflow-y: auto; 
-    animation: none; 
+    width: 95%;
+    max-width: 100%; 
+    padding: 1rem; 
+    margin: 2vh auto; 
+    box-sizing: border-box;
   }
 
   .intro {
@@ -508,7 +504,14 @@ input:focus {
 
   .seccion-transacciones input,
   .seccion-transacciones select {
+    width: 100%;
     font-size: 1rem;
+  }
+
+  .visualizacion canvas {
+    width: 100% !important; 
+    height: auto !important; 
+    max-height: 300px; 
   }
 }
 
