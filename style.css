@@ -103,16 +103,7 @@ form div.incorrect input {
   animation: deslizar 0.8s ease forwards;
 }
 
-@keyframes deslizar {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
 
 h1, h2 {
   text-align: center;
