@@ -34,20 +34,21 @@ Crear una empresa desde cero es algo complicado y más si no se tiene un control
 - MySql
 - Render, Railway, Github Pages
 
+ creación de rutas y organización. 
 # Cronograma de Avances. 📅
    
-| Semana   |                                  Harold                                     |                         Edwin                                            |
-|----------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| Semana 1 |    Creación del proyecto, instalación de dependencias y estructura base.    |             Diseño inicial del inicio de sesión y registro               |
-| Semana 2 |        Conexión a base de datos, creación de rutas y organización.          |            Validación del inicio de sesión y registro con JS             |
-| Semana 3 |                                                                             |          Bocetos y diseño de la página principal o "landpage"            |
-| Semana 4 |                                                                             |Creación de secciones "Ingresos y Gastos", "Presupuestos y "Visualización"|
-| Semana 5 |                                                                             |                     Diseño del login y registro                          |
-| Semana 6 |                                                                             |                     Cambio de nombre e interfaz                          |
-| Semana 7 |                                                                             |            Conexión base de datos desde GitHub y Frontend                |
-| Semana 8 |                                                                             |                           Rediseño Interfaz                              |
-| Semana 8 |                                                                             |                               LogOut                                     |
-| Semana 9 |                                                                             |          Ajustes varios, móviles, resolución, márgenes, etc              |
+| Semana   |                                  Harold                                                |                         Edwin                                            |
+|----------|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| Semana 1 |                            Creación del proyecto                                       |             Diseño inicial del inicio de sesión y registro               |
+| Semana 2 |       Instalación de dependencias (express, mysql2, cors, bcrypt, jsonwebtoken)        |            Validación del inicio de sesión y registro con JS             |
+| Semana 3 |                       Creación de la base de datos en MySQL                            |          Bocetos y diseño de la página principal o "landpage"            |
+| Semana 4 |         Creación de rutas básicas (register, login) y organización del código          |Creación de secciones "Ingresos y Gastos", "Presupuestos y "Visualización"|
+| Semana 5 |          Implementación de JWT para login seguro y creación de "verificarToken"        |                     Diseño del login y registro                          |
+| Semana 6 |                                                                                        |                     Cambio de nombre e interfaz                          |
+| Semana 7 |Implementación de rutas protegidas con token (usuarios, transacciones, presupuestos)    |            Conexión base de datos desde GitHub y Frontend                |
+| Semana 8 |                                                                                        |                           Rediseño Interfaz                              |
+| Semana 8 |                      Conexión del backend con Render                                   |                               LogOut                                     |
+| Semana 9 |                                                                                        |          Ajustes varios, móviles, resolución, márgenes, etc              |
 
 
 
