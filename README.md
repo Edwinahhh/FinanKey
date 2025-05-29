@@ -36,11 +36,19 @@ Crear una empresa desde cero es algo complicado y más si no se tiene un control
 
 # Cronograma de Avances. 📅
    
-| Semana   |                                  Harold                                     |                         Edwin                                    |
-|----------|-----------------------------------------------------------------------------|------------------------------------------------------------------|
-| Semana 1 |    Creación del proyecto, instalación de dependencias y estructura base.    |         Diseño inicial del inicio de sesión y registro           |
-| Semana 2 |        Conexión a base de datos, creación de rutas y organización.          |        Validación del inicio de sesión y registro con JS         |
-| Semana 3 |                                                                             |      Bocetos y diseño de la página principal o "landpage"        |
-| Semana 4 |                                                                             | Creación de "Ingresos y Gastos", "Presupuestos y "Visualización" |
-| Semana 5 |                                                                             |                                                                  |
+| Semana   |                                  Harold                                     |                         Edwin                                            |
+|----------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| Semana 1 |    Creación del proyecto, instalación de dependencias y estructura base.    |             Diseño inicial del inicio de sesión y registro               |
+| Semana 2 |        Conexión a base de datos, creación de rutas y organización.          |            Validación del inicio de sesión y registro con JS             |
+| Semana 3 |                                                                             |          Bocetos y diseño de la página principal o "landpage"            |
+| Semana 4 |                                                                             |Creación de secciones "Ingresos y Gastos", "Presupuestos y "Visualización"|
+| Semana 5 |                                                                             |                     Diseño del login y registro                          |
+| Semana 6 |                                                                             |                     Cambio de nombre e interfaz                          |
+| Semana 7 |                                                                             |            Conexión base de datos desde GitHub y Frontend                |
+| Semana 8 |                                                                             |                           Rediseño Interfaz                              |
+| Semana 8 |                                                                             |                               LogOut                                     |
+| Semana 9 |                                                                             |          Ajustes varios, móviles, resolución, márgenes, etc              |
+
+
+
 
