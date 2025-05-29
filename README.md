@@ -21,7 +21,7 @@ Crear una empresa desde cero es algo complicado y más si no se tiene un control
 - Gráficos del balance de gastos e ingresos.
 - Balance económico básico.
 
-## Seguridad y roles. 🔐
+## Seguridad. 🔐
 - Claves encriptadas.
 - Inicio de sesión con credenciales únicas.
 
