@@ -1,0 +1,69 @@
+:root {
+    --accent-color: #ffffff;
+    --base-color: #000000e1;
+    --text-color: #1a1a1a;
+    --input-color: #ffffffea;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: var(--base-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-image: url(pexels-padrinan-255379.jpg);
+  }
+  
+  .wrapper {
+    max-width: 500px;
+    padding: 30px;
+    background-color: #0db3d4;
+  }
+  
+
+  form div {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    background-color: var(--input-color);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  form input {
+    flex: 1;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    background-color: var(--accent-color);
+    color: var(--base-color);
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  #mensaje-error {
+    color: red;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
