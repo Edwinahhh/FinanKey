@@ -507,12 +507,6 @@ input:focus {
     width: 100%;
     font-size: 1rem;
   }
-
-  .visualizacion canvas {
-    width: 95% !important; 
-    height: auto !important; 
-    max-height: 300px; 
-  }
 }
 
 html, body {
