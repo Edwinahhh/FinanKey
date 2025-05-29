@@ -113,7 +113,7 @@
     });
 
     function cargarTransacciones(filtro = "todo") {
-      fetch(`https://finankey-backend.onrender.com/api/transacciones/${usuario_id}`, {
+      fetch(`https://finankey-backend.onrender.com/api/transacciones`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
