@@ -58,6 +58,11 @@
         return;
       }
 
+       document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("token"); 
+        window.location.href = "inicio-sesion.html"; 
+      });
+
       function parseJwt(token) {
         try {
           const base64Url = token.split('.')[1];
