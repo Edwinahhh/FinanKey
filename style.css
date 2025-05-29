@@ -452,12 +452,19 @@ input:focus {
 
   .wrapper,
   .contenedor-ingresos,
-  .contenedor-presupuestos,
-  .contenedor-visualizacion {
+  .contenedor-presupuestos {
     width: 90%;
     padding: 1rem;
     margin-top: 5vh;
     max-height: 80vh;
+  }
+
+  .contenedor-visualizacion {
+    width: 95%;
+    padding: 1rem;
+    margin-top: 3vh;
+    min-height: auto;
+    max-height: none;
   }
 
   .intro {
