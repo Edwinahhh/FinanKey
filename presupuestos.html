@@ -13,7 +13,7 @@
       <button onclick="window.location.href='ingresos-gastos.html'">Ingresos y Gastos</button>
       <button onclick="window.location.href='presupuestos.html'">Presupuestos</button>
       <button onclick="window.location.href='visualizacion.html'">Visualización</button>
-      <button id="logoutBtn" style="display: none;">Cerrar sesión</button>
+      <button id="logoutBtn">Cerrar sesión</button>
     </nav>
   </header>
 
@@ -60,18 +60,10 @@
     window.onload = () => {
       const token = localStorage.getItem("token");
 
-      const logoutBtn = document.getElementById("logoutBtn");
-      if (token) {
-        logoutBtn.style.display = "inline-block";
-        logoutBtn.addEventListener("click", () => {
-          localStorage.removeItem("token");
-          window.location.href = "inicio-sesion.html";
-        });
-      } else {
-        alert("Debes iniciar sesión para acceder.");
-        window.location.href = "inicio-sesion.html";
-        return;
-      }
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("token"); 
+        window.location.href = "inicio-sesion.html"; 
+      });
 
       const decoded = parseJwt(token);
       const usuario_id = decoded?.id;
