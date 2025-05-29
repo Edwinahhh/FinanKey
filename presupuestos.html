@@ -112,20 +112,24 @@
       });
 
       function cargarPresupuestos() {
-        fetch(`https://finankey-backend.onrender.com/api/presupuestos/${usuario_id}`)
-          .then(res => res.json())
-          .then(presupuestos => {
-            tablaBody.innerHTML = "";
-            presupuestos.forEach(p => {
-              const row = document.createElement("tr");
-              row.innerHTML = `
-                <td>${p.categoria}</td>
-                <td>$${p.limite}</td>
-                <td>${new Date(p.fecha_creacion).toLocaleDateString()}</td>
-              `;
-              tablaBody.appendChild(row);
-            });
+        fetch(`https://finankey-backend.onrender.com/api/presupuestos/${usuario_id}`, {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then(res => res.json())
+        .then(presupuestos => {
+          tablaBody.innerHTML = "";
+          presupuestos.forEach(p => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${p.categoria}</td>
+              <td>$${p.limite}</td>
+              <td>${new Date(p.fecha_creacion).toLocaleDateString()}</td>
+            `;
+            tablaBody.appendChild(row);
           });
+        });
       }
 
       cargarPresupuestos(); 
